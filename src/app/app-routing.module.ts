@@ -1,17 +1,22 @@
-import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
-import { DashboardComponent } from "./components/dashboard/dashboard.component";
-import { ManageComponent } from "./components/manage/manage.component";
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ManageComponent } from './components/manage/manage.component';
+import { DatadashboardComponent } from './components/data-center/datadashboard/datadashboard.component';
 
 const routes: Routes = [
   {
-    path: "",
+    path: '',
     component: DashboardComponent,
   },
   {
-    path: "manage",
+    path: 'manage',
     component: ManageComponent,
+  },
+  {
+    path: 'datacenter',
+    component: DatadashboardComponent,
   },
 ];
 
