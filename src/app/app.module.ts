@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -13,6 +13,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ManageComponent } from './components/manage/manage.component';
 import { DatadashboardComponent } from './components/data-center/datadashboard/datadashboard.component';
 import { MetricComponent } from './components/data-center/metric/metric.component';
+import { NodesComponent } from './components/data-center/nodes/nodes.component';
+import { NodesRowComponent } from './components/data-center/nodes-row/nodes-row.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { MetricComponent } from './components/data-center/metric/metric.componen
     ManageComponent,
     DatadashboardComponent,
     MetricComponent,
+    NodesComponent,
+    NodesRowComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,5 +36,6 @@ import { MetricComponent } from './components/data-center/metric/metric.componen
   ],
   providers: [StocksService],
   bootstrap: [AppComponent],
+  schemas: [NO_ERRORS_SCHEMA],
 })
 export class AppModule {}
