@@ -1,4 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 
 interface Metric {
   used: number;
@@ -34,6 +40,10 @@ export class DatadashboardComponent implements OnInit, OnDestroy {
     this.interval = setInterval(() => {
       this.generateData();
     }, 15000);
+  }
+
+  refresh(): void {
+    this.generateData();
   }
 
   generateData(): void {
