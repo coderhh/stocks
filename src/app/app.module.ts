@@ -15,6 +15,7 @@ import { DatadashboardComponent } from './components/data-center/datadashboard/d
 import { MetricComponent } from './components/data-center/metric/metric.component';
 import { NodesComponent } from './components/data-center/nodes/nodes.component';
 import { NodesRowComponent } from './components/data-center/nodes-row/nodes-row.component';
+import { NodesDetailComponent } from './components/data-center/nodes-detail/nodes-detail.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { NodesRowComponent } from './components/data-center/nodes-row/nodes-row.
     MetricComponent,
     NodesComponent,
     NodesRowComponent,
+    NodesDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +36,7 @@ import { NodesRowComponent } from './components/data-center/nodes-row/nodes-row.
     FormsModule,
     NgbModule,
   ],
+  entryComponents: [NodesDetailComponent],
   providers: [StocksService],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA],
