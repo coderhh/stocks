@@ -2,7 +2,13 @@
   <button class="btn btn-info" type="button" (click)="refresh()">
     Reload
   </button>
+</div>
 
+<div class="container mt-2">
+  <ng-template #alertBox></ng-template>
+</div>
+
+<div class="container mt-2">
   <div class="row">
     <app-metric class="col-sm-6" [used]="cpu.used" [available]="cpu.available">
       <metric-title>CPU</metric-title>
