@@ -3,8 +3,16 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { StocksService } from './services/stocks.service';
+import { CustomersService } from './services/customers.service';
+
+import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +25,9 @@ import { NodesComponent } from './components/data-center/nodes/nodes.component';
 import { NodesRowComponent } from './components/data-center/nodes-row/nodes-row.component';
 import { NodesDetailComponent } from './components/data-center/nodes-detail/nodes-detail.component';
 import { AlertComponent } from './components/data-center/alert/alert.component';
+import { CustomerComponent } from './components/customer/customer.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CustomersComponent } from './components/customers/customers.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +41,8 @@ import { AlertComponent } from './components/data-center/alert/alert.component';
     NodesRowComponent,
     NodesDetailComponent,
     AlertComponent,
+    CustomerComponent,
+    CustomersComponent
   ],
   imports: [
     BrowserModule,
@@ -37,9 +50,16 @@ import { AlertComponent } from './components/data-center/alert/alert.component';
     HttpClientModule,
     FormsModule,
     NgbModule,
+    BrowserAnimationsModule,
+    MatListModule,
+    MatButtonModule,
+    MatIconModule,
+    MatToolbarModule,
+    FlexLayoutModule,
+    MatSidenavModule
   ],
   entryComponents: [NodesDetailComponent, AlertComponent],
-  providers: [StocksService],
+  providers: [StocksService, CustomersService],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA],
 })
