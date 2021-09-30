@@ -4,8 +4,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ManageComponent } from './components/manage/manage.component';
 import { DatadashboardComponent } from './components/data-center/datadashboard/datadashboard.component';
-import { CustomerComponent } from './components/customer/customer.component';
-import { CustomersComponent } from './components/customers/customers.component';
+import { CustomersComponent } from './invoice/customers/customers.component';
+import { CustomerComponent } from './invoice/customer/customer.component';
+import { CustomerFormComponent } from './invoice/customer-form/customer-form.component';
+import { InvoiceModule } from './invoice/invoice.module';
 
 const routes: Routes = [
   {
@@ -23,7 +25,16 @@ const routes: Routes = [
   {
     path: 'customers',
     component: CustomersComponent,
-  }
+  },
+  //{ path: 'invoices', component: InvoicesComponent },
+  //{ path: 'invoices/create', component: InvoiceFormComponent },
+  //{ path: 'invoices/:invoiceId', component: InvoiceComponent },
+  //{ path: 'invoices/:invoiceId/edit', component: InvoiceFormComponent },
+  { path: 'customers', component: CustomersComponent },
+  //{ path: 'customers/create', component: CustomerFormComponent },
+  { path: 'customers/:customerId', component: CustomerComponent },
+  { path: 'customers/:customerId/edit', component: CustomerFormComponent },
+  //{ path: '', pathMatch: 'full', redirectTo: '/invoices' }
 ];
 
 @NgModule({

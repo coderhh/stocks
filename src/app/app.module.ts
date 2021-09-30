@@ -4,16 +4,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
 import { StocksService } from './services/stocks.service';
-import { CustomersService } from './services/customers.service';
-
-import { MatListModule } from '@angular/material/list';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { CustomersService } from './invoice/service/customers/customers.service';
 import { MatSidenavModule } from '@angular/material/sidenav';
-
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SummaryComponent } from './components/summary/summary.component';
@@ -25,9 +19,12 @@ import { NodesComponent } from './components/data-center/nodes/nodes.component';
 import { NodesRowComponent } from './components/data-center/nodes-row/nodes-row.component';
 import { NodesDetailComponent } from './components/data-center/nodes-detail/nodes-detail.component';
 import { AlertComponent } from './components/data-center/alert/alert.component';
-import { CustomerComponent } from './components/customer/customer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CustomersComponent } from './components/customers/customers.component';
+import { InvoiceModule } from './invoice/invoice.module';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -40,9 +37,7 @@ import { CustomersComponent } from './components/customers/customers.component';
     NodesComponent,
     NodesRowComponent,
     NodesDetailComponent,
-    AlertComponent,
-    CustomerComponent,
-    CustomersComponent
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -51,12 +46,14 @@ import { CustomersComponent } from './components/customers/customers.component';
     FormsModule,
     NgbModule,
     BrowserAnimationsModule,
-    MatListModule,
+    FlexLayoutModule,
+    MatSidenavModule,
+    MatToolbarModule,
     MatButtonModule,
     MatIconModule,
-    MatToolbarModule,
-    FlexLayoutModule,
-    MatSidenavModule
+    MatListModule,
+    RouterModule,
+    InvoiceModule
   ],
   entryComponents: [NodesDetailComponent, AlertComponent],
   providers: [StocksService, CustomersService],

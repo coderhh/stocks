@@ -9,7 +9,9 @@ interface Query {
   expand?: string;
 }
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class RestService {
   base: string = 'http://localhost:3000';
   resource: string = '/';

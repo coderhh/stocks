@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomersService } from 'src/app/services/customers.service';
-import { Customer } from 'src/app/services/customer';
+import { Customer } from '../model/customer.model';
+import { CustomersService } from '../service/customers/customers.service';
 
 @Component({
   selector: 'app-customers',
@@ -9,14 +9,12 @@ import { Customer } from 'src/app/services/customer';
 })
 export class CustomersComponent implements OnInit {
   customers: Customer[];
-
-  constructor(private customerService: CustomersService) { }
+  constructor(private customersService: CustomersService) { }
 
   ngOnInit(): void {
-    this.customerService.query<Array<Customer>>({ sort: 'created', order: 'desc' })
+    this.customersService.query<Array<Customer>>({ sort: 'created', order: 'desc' })
       .subscribe(customers => {
         this.customers = customers;
       })
   }
-
 }
