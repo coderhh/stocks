@@ -1,15 +1,14 @@
 <div class="container mt-2">
-  <div class="mdl-grid">
-    <div
-      class="mdl-cell mdl-cell--12-col"
+  <div
+      class=""
       *ngIf="!stocks"
       style="text-align: center;"
     >
       Loading
     </div>
-    
-    <div class="mdl-cell mdl-cell--3-col" *ngFor="let stock of stocks">
+  <mat-grid-list cols="2" rowHeight="2:1">
+    <mat-grid-tile *ngFor="let stock of stocks">
       <summary [stock]="stock"></summary>
-    </div>
-  </div>
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>
