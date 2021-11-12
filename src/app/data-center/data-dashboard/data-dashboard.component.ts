@@ -24,10 +24,10 @@ interface Node {
 
 @Component({
   selector: 'app-datadashboard',
-  templateUrl: './datadashboard.component.html',
-  styleUrls: ['./datadashboard.component.css'],
+  templateUrl: './data-dashboard.component.html',
+  styleUrls: ['./data-dashboard.component.css'],
 })
-export class DatadashboardComponent implements OnInit, OnDestroy {
+export class DataDashboardComponent implements OnInit, OnDestroy {
   cpu: Metric;
   mem: Metric;
   cluster1: Node[];
