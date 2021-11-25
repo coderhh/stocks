@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ManageComponent } from './components/manage/manage.component';
+import { LoginComponent } from './components/login/login.component';
 import { DataDashboardComponent } from './data-center/data-dashboard/data-dashboard.component';
 import { CustomersComponent } from './invoice/customers/customers.component';
 import { CustomerComponent } from './invoice/customer/customer.component';
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'manage',
     component: ManageComponent,
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
   },
   {
     path: 'datacenter',
