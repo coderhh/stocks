@@ -10,15 +10,17 @@ import { CustomerFormComponent } from './invoice/customer-form/customer-form.com
 import { InvoicesComponent } from './invoice/invoices/invoices.component';
 import { InvoiceFormComponent } from './invoice/invoice-form/invoice-form.component';
 import { InvoiceComponent } from './invoice/invoice/invoice.component';
+import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
-    component: DashboardComponent,
+    component: DashboardComponent
   },
   {
     path: 'manage',
     component: ManageComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',
@@ -31,8 +33,9 @@ const routes: Routes = [
   {
     path: 'customers',
     component: CustomersComponent,
+    canActivate: [AuthGuard]
   },
-  { path: 'invoices', component: InvoicesComponent },
+  { path: 'invoices', component: InvoicesComponent, canActivate: [AuthGuard] },
   { path: 'invoices/create', component: InvoiceFormComponent },
   { path: 'invoices/:invoiceId', component: InvoiceComponent },
   { path: 'invoices/:invoiceId/edit', component: InvoiceFormComponent },
