@@ -23,17 +23,13 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from '@angular/material/input';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SummaryComponent,
     DashboardComponent,
-    ManageComponent,
-    LoginComponent,
-    RegisterComponent
+    ManageComponent
   ],
   imports: [
     BrowserModule,
