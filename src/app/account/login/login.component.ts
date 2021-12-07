@@ -5,11 +5,13 @@ import { first } from 'rxjs/operators';
 import { AccountService } from '../../services/account.service';
 import { AlertService } from '../../services/alert.service';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent {
   loginForm: FormGroup;
   loading = false;
@@ -59,7 +61,6 @@ export class LoginComponent {
     if (this.f.email.hasError('required')|| this.f.password.hasError('required')) {
       return 'You must enter a value';
     }
-
     return this.f.email.hasError('email') ? 'Not a valid email' : '';
   }
 }

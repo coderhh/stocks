@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { StocksService } from './services/stocks.service';
@@ -23,6 +23,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from '@angular/material/input';
+import { fakeBackendProvider } from './services/fake-backend';
+import { ErrorInterceptor } from './services/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,11 @@ import { MatInputModule } from '@angular/material/input';
     MatFormFieldModule,
     MatInputModule
   ],
-  providers: [StocksService, CustomersService],
+  providers: [
+    StocksService,
+    CustomersService,
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    fakeBackendProvider],
   bootstrap: [AppComponent],
 
 })
