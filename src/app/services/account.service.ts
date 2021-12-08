@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Account } from '../account/model/account';
 import { environment } from '../../environments/environment';
+import { Router } from '@angular/router';
 
 const baseUrl = `${environment.apiUrl}/accounts`;
 @Injectable({
@@ -14,7 +15,10 @@ export class AccountService {
   private accountSubject : BehaviorSubject<Account>;
   private account: Observable<Account>;
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private router: Router
+  ) {
     this.accountSubject = new BehaviorSubject<Account>(null);
     this.account = this.accountSubject.asObservable();
   }
@@ -33,7 +37,10 @@ export class AccountService {
   }
 
   logout() {
-    throw new Error("Method not implemented.");
+    this.http.post<any>(`${baseUrl}/revoke-token`, {}, { withCredentials: true}).subscribe();
+    this.stopRefreshTokenTimer();
+    this.accountSubject.next(null);
+    this.router.navigate(['/account/login']);
   }
 
   refreshToken() {
@@ -43,6 +50,13 @@ export class AccountService {
           this.startRefreshTokenTimer();
           return account;
         }));
+  }
+
+  register(account: Account) {
+    return this.http.post(`${baseUrl}/register`, account);
+  }
+  verifyEmail(token: string){
+    return this.http.post(`${baseUrl}/verify-email`, { token });
   }
   // helper method
   private refresheTokenTimeout;
@@ -57,4 +71,7 @@ export class AccountService {
     this.refresheTokenTimeout = setTimeout(() => this.refreshToken().subscribe(), timeout);
   }
 
+  private stopRefreshTokenTimer() {
+    clearTimeout(this.refresheTokenTimeout);
+  }
 }
