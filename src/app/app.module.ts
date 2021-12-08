@@ -25,6 +25,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from '@angular/material/input';
 import { fakeBackendProvider } from './services/fake-backend';
 import { ErrorInterceptor } from './services/error.interceptor';
+import { JwtInterceptor } from './helper/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { ErrorInterceptor } from './services/error.interceptor';
     StocksService,
     CustomersService,
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     fakeBackendProvider],
   bootstrap: [AppComponent],
 
