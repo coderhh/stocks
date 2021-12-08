@@ -47,7 +47,7 @@ export class LoginComponent {
         .pipe(first())
         .subscribe({
           next: () => {
-              const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+              const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/account';
               this.router.navigateByUrl(returnUrl);
           },
           error: error => {

@@ -116,7 +116,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
             // display verification email in an alert
             setTimeout(() => {
-                const verifyUrl = `${location.origin}/accounts/verify-email?token=${account.verificationToken}`;
+                const verifyUrl = `${location.origin}/account/verify-email?token=${account.verificationToken}`;
                 alertService.info(`
                 <h4>Verification Email</h4>
                     <p>Thanks for registering!</p>

@@ -13,10 +13,11 @@ import { AccountComponent } from './account.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AlertComponent } from './alert/alert.component';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
 
 
 @NgModule({
-  declarations: [AccountComponent, LoginComponent, RegisterComponent, AlertComponent],
+  declarations: [AccountComponent, LoginComponent, RegisterComponent, AlertComponent, VerifyEmailComponent],
   imports: [
     CommonModule,
     AccountRoutingModule,
