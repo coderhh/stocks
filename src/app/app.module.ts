@@ -23,8 +23,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from '@angular/material/input';
-import { fakeBackendProvider } from './services/fake-backend';
-import { ErrorInterceptor } from './services/error.interceptor';
+import { fakeBackendProvider } from './helper/fake-backend';
+import { ErrorInterceptor } from './helper/error.interceptor';
 import { JwtInterceptor } from './helper/jwt.interceptor';
 
 @NgModule({
@@ -60,7 +60,8 @@ import { JwtInterceptor } from './helper/jwt.interceptor';
     CustomersService,
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    fakeBackendProvider],
+    //fakeBackendProvider
+  ],
   bootstrap: [AppComponent],
 
 })

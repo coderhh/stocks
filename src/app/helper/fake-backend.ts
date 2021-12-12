@@ -3,7 +3,7 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse, HTT
 import { Injectable } from "@angular/core";
 import { Observable, of, throwError } from "rxjs";
 import { delay, dematerialize, materialize } from "rxjs/operators";
-import { AlertService } from "./alert.service";
+import { AlertService } from "../services/alert.service";
 import { Role } from "../account/model/role";
 
 const accountsKey = 'stocks-accounts';

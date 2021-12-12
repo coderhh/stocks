@@ -10,8 +10,8 @@ export class DashboardComponent implements OnInit {
   stocks: Array<StockInterface>;
   symbols: Array<string>;
 
-  constructor(private service: StocksService) {
-    this.symbols = service.get();
+  constructor(private stockService: StocksService) {
+    this.symbols = stockService.get();
   }
 
   ngOnInit() {
@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit {
   }
 
   readStockData() {
-    this.service
+    this.stockService
       .load(this.symbols)
       .subscribe((stocks) => (this.stocks = stocks));
   }
