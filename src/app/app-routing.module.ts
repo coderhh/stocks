@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ManageComponent } from './components/manage/manage.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
 import { DataDashboardComponent } from './data-center/data-dashboard/data-dashboard.component';
 import { CustomersComponent } from './invoice/customers/customers.component';
 import { CustomerComponent } from './invoice/customer/customer.component';
@@ -16,20 +14,13 @@ import { AuthGuard } from './services/auth.guard';
 const routes: Routes = [
   {
     path: '',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'manage',
     component: ManageComponent,
     canActivate: [AuthGuard]
-  },
-  {
-    path: 'login',
-    component: LoginComponent,
-  },
-  {
-    path: 'register',
-    component: RegisterComponent,
   },
   {
     path: 'datacenter',
@@ -48,7 +39,8 @@ const routes: Routes = [
   { path: 'customers/create', component: CustomerFormComponent },
   { path: 'customers/:customerId', component: CustomerComponent },
   { path: 'customers/:customerId/edit', component: CustomerFormComponent },
-  { path: '', pathMatch: 'full', redirectTo: '/invoices' }
+  { path: '', pathMatch: 'full', redirectTo: '/invoices' },
+  { path: 'account', loadChildren: () => import('./account/account.module').then(m => m.AccountModule) }
 ];
 
 @NgModule({

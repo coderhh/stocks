@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { StocksService } from './services/stocks.service';
@@ -23,17 +23,16 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from '@angular/material/input';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
+import { fakeBackendProvider } from './helper/fake-backend';
+import { ErrorInterceptor } from './helper/error.interceptor';
+import { JwtInterceptor } from './helper/jwt.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
     SummaryComponent,
     DashboardComponent,
-    ManageComponent,
-    LoginComponent,
-    RegisterComponent
+    ManageComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +55,13 @@ import { RegisterComponent } from './components/register/register.component';
     MatFormFieldModule,
     MatInputModule
   ],
-  providers: [StocksService, CustomersService],
+  providers: [
+    StocksService,
+    CustomersService,
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    //fakeBackendProvider
+  ],
   bootstrap: [AppComponent],
 
 })
