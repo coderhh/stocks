@@ -60,7 +60,7 @@ import { JwtInterceptor } from './helper/jwt.interceptor';
     CustomersService,
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    //fakeBackendProvider
+    fakeBackendProvider
   ],
   bootstrap: [AppComponent],
 
