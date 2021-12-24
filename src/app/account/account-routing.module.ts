@@ -5,6 +5,8 @@ import { AccountComponent } from './account.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 const routes: Routes = [
   {
@@ -12,15 +14,11 @@ const routes: Routes = [
     children: [
       {path: 'login', component: LoginComponent },
       {path: 'register', component: RegisterComponent },
-      {path: 'verify-email', component: VerifyEmailComponent}
+      {path: 'verify-email', component: VerifyEmailComponent},
+      {path: 'forgot-password', component: ForgotPasswordComponent},
+      {path: 'reset-password', component: ResetPasswordComponent}
     ]
   }
-  // {
-  //   path: 'login', component: LoginComponent
-  // },
-  // {
-  //   path: 'register', component: RegisterComponent
-  // }
 ];
 
 @NgModule({

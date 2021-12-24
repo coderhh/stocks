@@ -226,7 +226,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             if (!isAuthorized(Role.Admin)) return unauthorized();
 
             const account = body;
-            if (accounts.find(x => e.email === account.email)){
+            if (accounts.find(x => x.email === account.email)){
                 return error(`Email ${account.email} is already registered`);
             }
 
