@@ -16,10 +16,12 @@ import { AlertComponent } from './alert/alert.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ProfileUpdateComponent } from './profile-update/profile-update.component';
 
 
 @NgModule({
-  declarations: [AccountComponent, LoginComponent, RegisterComponent, AlertComponent, VerifyEmailComponent, ForgotPasswordComponent, ResetPasswordComponent],
+  declarations: [AccountComponent, LoginComponent, RegisterComponent, AlertComponent, VerifyEmailComponent, ForgotPasswordComponent, ResetPasswordComponent, ProfileComponent, ProfileUpdateComponent],
   imports: [
     CommonModule,
     AccountRoutingModule,

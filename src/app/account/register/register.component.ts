@@ -5,11 +5,7 @@ import { first } from 'rxjs/operators';
 import { AccountService } from 'src/app/services/account.service';
 import { AlertService } from 'src/app/services/alert.service';
 import { MustMatch } from '../../helper/must-match';
-
-interface Title {
-  value: string;
-  viewValue: string;
-}
+import { Title } from 'src/app/account/model/title';
 
 @Component({
   selector: 'app-register',
@@ -51,7 +47,7 @@ export class RegisterComponent implements OnInit {
     ];
   }
 
-  get f() { return this.registerForm.controls }
+  get f() { return this.registerForm.controls; }
 
   onSubmit(){
     this.submitted = true;

@@ -7,6 +7,9 @@ import { RegisterComponent } from './register/register.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ProfileComponent } from './profile/profile.component';
+import { AuthGuard } from '../services/auth.guard';
+import { ProfileUpdateComponent } from './profile-update/profile-update.component';
 
 const routes: Routes = [
   {
@@ -16,7 +19,9 @@ const routes: Routes = [
       {path: 'register', component: RegisterComponent },
       {path: 'verify-email', component: VerifyEmailComponent},
       {path: 'forgot-password', component: ForgotPasswordComponent},
-      {path: 'reset-password', component: ResetPasswordComponent}
+      {path: 'reset-password', component: ResetPasswordComponent},
+      {path: 'profile', component: ProfileComponent},
+      {path: 'profile-update', component: ProfileUpdateComponent}
     ]
   }
 ];
