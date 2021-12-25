@@ -10,6 +10,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from '../services/auth.guard';
 import { ProfileUpdateComponent } from './profile-update/profile-update.component';
+import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
   {
@@ -21,7 +22,8 @@ const routes: Routes = [
       {path: 'forgot-password', component: ForgotPasswordComponent},
       {path: 'reset-password', component: ResetPasswordComponent},
       {path: 'profile', component: ProfileComponent},
-      {path: 'profile-update', component: ProfileUpdateComponent}
+      {path: 'profile-update', component: ProfileUpdateComponent},
+      {path: 'admin', component: AdminComponent}
     ]
   }
 ];
