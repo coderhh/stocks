@@ -18,11 +18,10 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileUpdateComponent } from './profile-update/profile-update.component';
-import { AdminComponent } from './admin/admin.component';
 
 
 @NgModule({
-  declarations: [AccountComponent, LoginComponent, RegisterComponent, AlertComponent, VerifyEmailComponent, ForgotPasswordComponent, ResetPasswordComponent, ProfileComponent, ProfileUpdateComponent, AdminComponent],
+  declarations: [AccountComponent, LoginComponent, RegisterComponent, AlertComponent, VerifyEmailComponent, ForgotPasswordComponent, ResetPasswordComponent, ProfileComponent, ProfileUpdateComponent],
   imports: [
     CommonModule,
     AccountRoutingModule,
