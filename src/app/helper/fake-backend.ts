@@ -270,7 +270,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             let account = accounts.find(x => x.id === idFromUrl());
 
             // user accounts can delete own account and admin accounts can delete any account
-            if (account.id !== currentAccount().id && isAuthorized(Role.Admin)){
+            if (account.id !== currentAccount().id && !isAuthorized(Role.Admin)){
                 return unauthorized();
             }
 

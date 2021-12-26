@@ -40,10 +40,10 @@ export class RegisterComponent implements OnInit {
     });
 
     this.titles = [
-      {value: 'mr-0', viewValue: Title.Mr},
-      {value: 'mrs-1', viewValue: Title.Mrs},
-      {value: 'miss-2', viewValue: Title.Miss},
-      {value: 'ms-3', viewValue: Title.Ms}
+      {value: 'Mr', viewValue: Title.Mr},
+      {value: 'Mrs', viewValue: Title.Mrs},
+      {value: 'Miss', viewValue: Title.Miss},
+      {value: 'Ms', viewValue: Title.Ms}
     ];
 
   }

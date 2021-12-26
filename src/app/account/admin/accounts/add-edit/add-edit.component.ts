@@ -45,15 +45,15 @@ export class AddEditComponent implements OnInit {
       validator: MustMatch('password', 'confirmPassword')
     });
     this.titles = [
-      {value: 'mr-0', viewValue: Title.Mr},
-      {value: 'mrs-1', viewValue: Title.Mrs},
-      {value: 'miss-2', viewValue: Title.Miss},
-      {value: 'ms-3', viewValue: Title.Ms}
+      {value: 'Mr', viewValue: Title.Mr},
+      {value: 'Mrs', viewValue: Title.Mrs},
+      {value: 'Miss', viewValue: Title.Miss},
+      {value: 'Miss', viewValue: Title.Ms}
     ];
 
     this.roles = [
-      { value: 'user-0', viewValue: Role.User },
-      { value: 'admin-1', viewValue: Role.Admin}
+      { value: 'User', viewValue: Role.User },
+      { value: 'Admin', viewValue: Role.Admin}
     ];
 
     if (!this.isAddMode) {
