@@ -5,7 +5,7 @@ import { first } from 'rxjs/operators';
 import { MustMatch } from 'src/app/helper/must-match';
 import { AccountService } from 'src/app/services/account.service';
 import { AlertService } from 'src/app/services/alert.service';
-import { Title } from '../model/title';
+import { Title, TitleInterface } from '../model/title';
 
 @Component({
   selector: 'app-profile-update',
@@ -18,7 +18,7 @@ export class ProfileUpdateComponent implements OnInit {
   loading = false;
   submitted = false;
   deleting = false;
-  titles: Title[];
+  titles: TitleInterface[];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -40,12 +40,13 @@ export class ProfileUpdateComponent implements OnInit {
       validators: MustMatch('password', 'confirmPassword')
     });
 
-    this.titles = [
-      {value: 'mr-0', viewValue: 'Mr'},
-      {value: 'mrs-1', viewValue: 'Mrs'},
-      {value: 'miss-2', viewValue: 'Miss'},
-      {value: 'ms-3', viewValue: 'Ms'}
+     this.titles = [
+      {value: 'mr-0', viewValue: Title.Mr},
+      {value: 'mrs-1', viewValue: Title.Mrs},
+      {value: 'miss-2', viewValue: Title.Miss},
+      {value: 'ms-3', viewValue: Title.Ms}
     ];
+
   }
 
   get f() { return this.profileUpdateForm.controls; }

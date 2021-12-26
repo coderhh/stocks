@@ -9,6 +9,7 @@ import { AccountService } from 'src/app/services/account.service';
 })
 export class ListComponent implements OnInit {
   accounts: any[];
+  displayedColumns: string[] = ['title', 'lastName', 'firstName', 'email', 'role', 'action'];
   constructor(private accountService:AccountService) { }
 
   ngOnInit() {
@@ -19,7 +20,7 @@ export class ListComponent implements OnInit {
 
   deleteAccount(id: string){
     const account = this.accounts.find(x => x.id === id);
-    account.idDeleting = true;
+    account.isDeleting = true;
     this.accountService.delete(id)
         .pipe(first())
         .subscribe(() => {

@@ -5,7 +5,7 @@ import { first } from 'rxjs/operators';
 import { AccountService } from 'src/app/services/account.service';
 import { AlertService } from 'src/app/services/alert.service';
 import { MustMatch } from '../../helper/must-match';
-import { Title } from 'src/app/account/model/title';
+import { Title, TitleInterface } from 'src/app/account/model/title';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   loading = false;
   submitted = false;
-  titles: Title[];
+  titles: TitleInterface[];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -40,11 +40,12 @@ export class RegisterComponent implements OnInit {
     });
 
     this.titles = [
-      {value: 'mr-0', viewValue: 'Mr'},
-      {value: 'mrs-1', viewValue: 'Mrs'},
-      {value: 'miss-2', viewValue: 'Miss'},
-      {value: 'ms-3', viewValue: 'Ms'}
+      {value: 'mr-0', viewValue: Title.Mr},
+      {value: 'mrs-1', viewValue: Title.Mrs},
+      {value: 'miss-2', viewValue: Title.Miss},
+      {value: 'ms-3', viewValue: Title.Ms}
     ];
+
   }
 
   get f() { return this.registerForm.controls; }
