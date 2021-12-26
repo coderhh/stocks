@@ -5,7 +5,6 @@ import { first } from 'rxjs/operators';
 import { MustMatch } from 'src/app/helper/must-match';
 import { AccountService } from 'src/app/services/account.service';
 import { AlertService } from 'src/app/services/alert.service';
-import { Alert } from '../model/alert';
 import { Title } from '../model/title';
 
 @Component({
@@ -31,11 +30,11 @@ export class ProfileUpdateComponent implements OnInit {
 
   ngOnInit() {
     this.profileUpdateForm = this.formBuilder.group({
-      title: ['', Validators.required],
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      title: [this.account.title, Validators.required],
+      firstName: [this.account.firstName, Validators.required],
+      lastName: [this.account.lastName, Validators.required],
+      email: [this.account.email, [Validators.required, Validators.email]],
+      password: ['', [Validators.minLength(6)]],
       confirmPassword: ['']
     }, {
       validators: MustMatch('password', 'confirmPassword')

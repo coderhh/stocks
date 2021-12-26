@@ -13,7 +13,7 @@ const baseUrl = `${environment.apiUrl}/accounts`;
 export class AccountService {
 
   private accountSubject : BehaviorSubject<Account>;
-  private account: Observable<Account>;
+  public account: Observable<Account>;
 
   constructor(
     private http: HttpClient,

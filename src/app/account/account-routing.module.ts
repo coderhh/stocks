@@ -10,6 +10,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from '../services/auth.guard';
 import { ProfileUpdateComponent } from './profile-update/profile-update.component';
+import { Role } from './model/role';
 
 const routes: Routes = [
   {
@@ -20,10 +21,11 @@ const routes: Routes = [
       {path: 'verify-email', component: VerifyEmailComponent},
       {path: 'forgot-password', component: ForgotPasswordComponent},
       {path: 'reset-password', component: ResetPasswordComponent},
-      {path: 'profile', component: ProfileComponent},
+      {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
       {path: 'profile-update', component: ProfileUpdateComponent, canActivate: [AuthGuard]}
     ]
-  }
+  },
+  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), canActivate: [AuthGuard], data: { roles: [Role.Admin] } }
 ];
 
 @NgModule({

@@ -1,7 +1,7 @@
 <mat-card>
     <mat-card-title>Update Profile</mat-card-title>
     <mat-card-content>
-        <form [formGroup]="profileUpdateForm" (onSubmit)="onSubmit()">
+        <form [formGroup]="profileUpdateForm" (ngSubmit)="onSubmit()">
             <p>
                 <mat-form-field appearance="fill">
                     <mat-label>Title</mat-label>
@@ -34,7 +34,7 @@
             </p>
             <p>
                 <mat-form-field>
-                    <input type="text" matInput formControlName="email" placeholder="Email" required />
+                    <input type="text" matInput formControlName="email" placeholder="Email" required/>
                     <mat-error *ngIf="submitted && f.email.errors">
                         <mat-error *ngIf="f.email.errors.required">Email is required</mat-error>
                         <mat-error *ngIf="f.email.errors.email">Email must be a valid email address</mat-error>
@@ -54,7 +54,7 @@
             </p>
             <p>
                 <mat-form-field>
-                    <input type="password" matInput formControlName="confirmPassword" placeholder="ConfirmPassword" required />
+                    <input type="password" matInput formControlName="confirmPassword" placeholder="ConfirmPassword" />
                     <mat-error *ngIf="submitted && f.confirmPassword.errors">
                         <mat-error *ngIf="f.confirmPassword.errors.required">Confirm Password is required</mat-error>
                         <mat-error *ngIf="f.confirmPassword.errors.mustMatch">Password must match</mat-error>
@@ -70,7 +70,7 @@
                     <span *ngIf="deleting"></span>
                     Delete
                 </button>
-                <a routerLink="../" href="" class="btn btn-link">Cancel</a>
+                <a routerLink="../profile" href="" class="btn btn-link">Cancel</a>
             </p>
         </form>
     </mat-card-content>

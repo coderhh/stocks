@@ -5,7 +5,6 @@ import { Observable, of, throwError } from "rxjs";
 import { delay, dematerialize, materialize } from "rxjs/operators";
 import { AlertService } from "../services/alert.service";
 import { Role } from "../account/model/role";
-import { identifierModuleUrl } from "@angular/compiler";
 
 const accountsKey = 'stocks-accounts';
 let accounts = JSON.parse(localStorage.getItem(accountsKey)) || [];
@@ -181,7 +180,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             const { token } = body;
             const account = accounts.find(x =>
                 !!x.resetToken && x.resetToken === token &&
-                new Date() < new Date(x.resetsetTokenExpires)
+                new Date() < new Date(x.resetTokenExpires)
             );
 
             if(!account) return error('Invalid token');
@@ -281,7 +280,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             return ok();
         }
         function isAuthenticated() {
-            return !! currentAccount();
+            return !!currentAccount();
         }
         function isAuthorized(role: Role) {
             const account = currentAccount();
@@ -299,10 +298,11 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         function currentAccount() {
             // check if jwt token is in auth header
             const authHeader = headers.get('Authorization');
-            if (!authHeader.startsWith('Bear fake-jwt-token')) return;
+            if (!authHeader?.startsWith('Bear fake-jwt-token')) return;
 
             // check if token is expired
             const jwtToken = JSON.parse(atob(authHeader.split('.')[1]));
+             console.log(jwtToken);
             const tokenExpired = Date.now() > (jwtToken.exp * 1000);
             if (tokenExpired) return;
 
@@ -319,7 +319,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         function generateJwtToken(account) {
             // create token that expires in 15 minutes
             const tokenPayload = {
-                exp: Math.round(new Date(Date.now() * 15*60*1000).getTime() /1000),
+                exp: Math.round(new Date(Date.now() + 15*60*1000).getTime() /1000),
                 id: account.id
             }
             return `fake-jwt-token.${btoa(JSON.stringify(tokenPayload))}`;

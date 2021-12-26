@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -26,6 +26,8 @@ import { MatInputModule } from '@angular/material/input';
 import { fakeBackendProvider } from './helper/fake-backend';
 import { ErrorInterceptor } from './helper/error.interceptor';
 import { JwtInterceptor } from './helper/jwt.interceptor';
+import { AccountService } from './services/account.service';
+import { appInitializer } from './helper/app.initializer';
 
 @NgModule({
   declarations: [
@@ -58,6 +60,7 @@ import { JwtInterceptor } from './helper/jwt.interceptor';
   providers: [
     StocksService,
     CustomersService,
+    { provide: APP_INITIALIZER, useFactory: appInitializer, multi: true, deps: [AccountService] },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     fakeBackendProvider
