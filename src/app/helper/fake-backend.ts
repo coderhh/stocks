@@ -302,7 +302,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
             // check if token is expired
             const jwtToken = JSON.parse(atob(authHeader.split('.')[1]));
-             console.log(jwtToken);
             const tokenExpired = Date.now() > (jwtToken.exp * 1000);
             if (tokenExpired) return;
 
