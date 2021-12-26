@@ -5,11 +5,7 @@ import { first } from 'rxjs/operators';
 import { AccountService } from 'src/app/services/account.service';
 import { AlertService } from 'src/app/services/alert.service';
 import { MustMatch } from '../../helper/must-match';
-
-interface Title {
-  value: string;
-  viewValue: string;
-}
+import { Title, TitleInterface } from 'src/app/account/model/title';
 
 @Component({
   selector: 'app-register',
@@ -20,7 +16,7 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   loading = false;
   submitted = false;
-  titles: Title[];
+  titles: TitleInterface[];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -33,8 +29,8 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
       title: ['', Validators.required],
-      firstname: ['', Validators.required],
-      lastname: ['', Validators.required],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
@@ -44,14 +40,15 @@ export class RegisterComponent implements OnInit {
     });
 
     this.titles = [
-      {value: 'mr-0', viewValue: 'Mr'},
-      {value: 'mrs-1', viewValue: 'Mrs'},
-      {value: 'miss-2', viewValue: 'Miss'},
-      {value: 'ms-3', viewValue: 'Ms'}
+      {value: 'mr-0', viewValue: Title.Mr},
+      {value: 'mrs-1', viewValue: Title.Mrs},
+      {value: 'miss-2', viewValue: Title.Miss},
+      {value: 'ms-3', viewValue: Title.Ms}
     ];
+
   }
 
-  get f() { return this.registerForm.controls }
+  get f() { return this.registerForm.controls; }
 
   onSubmit(){
     this.submitted = true;

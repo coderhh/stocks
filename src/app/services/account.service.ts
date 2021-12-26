@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { finalize, map } from 'rxjs/operators';
 import { Account } from '../account/model/account';
 import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
@@ -13,7 +13,7 @@ const baseUrl = `${environment.apiUrl}/accounts`;
 export class AccountService {
 
   private accountSubject : BehaviorSubject<Account>;
-  private account: Observable<Account>;
+  public account: Observable<Account>;
 
   constructor(
     private http: HttpClient,
@@ -57,6 +57,49 @@ export class AccountService {
   }
   verifyEmail(token: string){
     return this.http.post(`${baseUrl}/verify-email`, { token });
+  }
+
+  forgotPassword(email: string){
+    return this.http.post(`${baseUrl}/forgot-password`, { email });
+  }
+
+  validateResetToken(token: string){
+    return this.http.post(`${baseUrl}/validate-reset-token`, { token });
+  }
+
+  resetPassword(token: string, password: string, confirmPassword: string){
+    return this.http.post(`${baseUrl}/reset-password`, { token, password, confirmPassword });
+  }
+
+  getAll(){
+    return this.http.get<Account[]>(baseUrl);
+  }
+
+  getById(id: string){
+    return this.http.get<Account>(`${baseUrl}/${id}`);
+  }
+
+  create(params) {
+    return this.http.post(baseUrl, params);
+  }
+
+  update(id: string, params: object){
+    return this.http.put(`${baseUrl}/${id}`, params)
+        .pipe(map((account:any) => {
+          if(account.id === this.accountValue.id){
+            account = { ...this.accountValue, ...account };
+            this.accountSubject.next(account);
+          }
+          return account;
+        }));
+  }
+
+  delete(id:string){
+    return this.http.delete(`${baseUrl}/${id}`)
+        .pipe(finalize(() => {
+          if(id === this.accountValue.id)
+            this.logout();
+        }));
   }
   // helper method
   private refresheTokenTimeout;

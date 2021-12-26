@@ -15,18 +15,18 @@
           </p>
           <p>
             <mat-form-field>
-              <input type="text" matInput placeholder="Firstname" formControlName="firstname">
-              <!-- <mat-error *ngIf="f.firstName.errors && f.firstName.errors.required">
+              <input type="text" matInput placeholder="Firstname" formControlName="firstName">
+              <mat-error *ngIf="f.firstName.errors && f.firstName.errors.required">
                 First Name is required
-              </mat-error> -->
+              </mat-error>
             </mat-form-field>
           </p>
           <p>
             <mat-form-field>
-              <input type="text" matInput placeholder="Lastname" formControlName="lastname">
-              <!-- <mat-error *ngIf ="f.lastName.errors && f.lastName.errors.required">
+              <input type="text" matInput placeholder="Lastname" formControlName="lastName">
+              <mat-error *ngIf ="f.lastName.errors && f.lastName.errors.required">
                 Last Name is required
-              </mat-error> -->
+              </mat-error>
             </mat-form-field>
           </p>
           <p>
@@ -49,9 +49,9 @@
             <mat-checkbox formControlName="acceptTerms">Accept Terms & Conditions</mat-checkbox>
             <mat-error *ngIf="submitted && f.acceptTerms.errors">Accept Ts & Cs is required</mat-error>
           </p>
-            <div class="button">
-              <button type="submit" mat-button>Register</button>
-            </div>
+          <div class="button">
+            <button type="submit" mat-button>Register</button>
+          </div>
         </form>
     </mat-card-content>
     <p>Aleady have account?  <a routerLink="/account/login">Login</a></p>
