@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../environments/environment';
 
 interface Query {
   limit?: number;
@@ -13,7 +14,7 @@ interface Query {
   providedIn: 'root'
 })
 export class RestService {
-  base: string = 'http://localhost:3000';
+  base: string = environment.apiUrl;
   resource: string = '/';
   type: any;
 

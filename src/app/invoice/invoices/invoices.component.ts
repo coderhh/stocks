@@ -16,11 +16,10 @@ export class InvoicesComponent implements OnInit {
 
   ngOnInit() {
     this.loadingService.register('invoices');
-    this.invoicesService.query<Array<Invoice>>({sort: 'created', order: 'desc'})
+    this.invoicesService.query<Array<Invoice>>()
       .subscribe(invoices => {
         this.invoices = invoices;
         this.loadingService.resolve('invoices');
       });
   }
-
 }

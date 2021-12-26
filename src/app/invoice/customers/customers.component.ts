@@ -12,7 +12,7 @@ export class CustomersComponent implements OnInit {
   constructor(private customersService: CustomersService) { }
 
   ngOnInit(): void {
-    this.customersService.query<Array<Customer>>({ sort: 'created', order: 'desc' })
+    this.customersService.query<Array<Customer>>()
       .subscribe(customers => {
         this.customers = customers;
       })
