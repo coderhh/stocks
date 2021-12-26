@@ -1,13 +1,15 @@
-import { registerLocaleData } from "@angular/common";
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, of, throwError } from "rxjs";
 import { delay, dematerialize, materialize } from "rxjs/operators";
 import { AlertService } from "../services/alert.service";
 import { Role } from "../account/model/role";
+import { default as db } from './db.json';
 
 const accountsKey = 'stocks-accounts';
 let accounts = JSON.parse(localStorage.getItem(accountsKey)) || [];
+let customers = db.customers;
+let invoices = db.invoices;
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
     constructor(private alertService: AlertService){ }
@@ -46,6 +48,12 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     return updateAccount();
                 case url.match(/\/accounts\/\d+$/) && method === 'DELETE':
                     return deleteAccount();
+                case url.endsWith('/customers') && method === 'GET':
+                    return getCustomers();
+                case url.match(/\/customers\/\d+$/) && method === 'GET':
+                    return getCustomerById();
+                case url.endsWith('/invoices') && method === 'GET':
+                    return getInvoices()
                 default:
                     return next.handle(req);
             }
@@ -279,6 +287,22 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             localStorage.setItem(accountsKey, JSON.stringify(accounts));
             return ok();
         }
+        function getCustomers() {
+            if (!isAuthenticated()) return unauthorized();
+            return ok(customers);
+        }
+
+        function getCustomerById() {
+            if (!isAuthenticated()) return unauthorized();
+
+            let customer = customers.find(x => x.id === idFromUrl())
+            return ok(customer);
+        }
+
+        function getInvoices() {
+            if (!isAuthenticated()) return unauthorized();
+            return ok(invoices);
+        }
         function isAuthenticated() {
             return !!currentAccount();
         }
@@ -363,4 +387,8 @@ export let fakeBackendProvider = {
     useClass: FakeBackendInterceptor,
     multi: true
 };
+
+
+
+
 
